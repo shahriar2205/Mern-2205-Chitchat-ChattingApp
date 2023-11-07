@@ -18,14 +18,31 @@ function Block({className}) {
     useEffect(()=>{
         const blockRef = ref(db, 'block/');
         onValue(blockRef, (snapshot) => {
-            let arr=[]
-         snapshot.forEach(item=>(
-          arr.push({...item.val()})
-         ))
-         setshowBlock(arr)
-       });
+          let arr=[]
+      snapshot.forEach((item)=>{
+        if(item.val().blockbyid==data.uid){
+          arr.push({
+            block:item.val().block,
+            blockid:item.val().blockid,
+            // id:item.val().id
+            id:item.key
+          })
+        }
+        else {
+          arr.push({
+            blockby:item.val().blockby,
+            blockbyid:item.val().blockbyid,
+            // id:item.val().id
+            id:item.key
+          })
+        }
+      })
+      setshowBlock(arr)
+      });
     },[])
+   
   
+    
   return (
     <>
        <section className={` ${className}`}>
@@ -37,31 +54,28 @@ function Block({className}) {
     <PiDotsThreeOutlineVerticalDuotone className='mt-1 text-signBtn' />
   </Flex >
   <div>
-            <div>
-                {
-                    showBlock.map((item)=>(
-                        <div>
-                            <Flex className=' mt-5 justify-between'>
-            <Flex className='gap-x-5'>
-              <Image src={Friend1} alt={Friend1} />
-              <div className=' mt-2 '>
-                <SubHeading text=
-                {
-                    item.sendername
-
-                }
-                 className=' text-lg' />
-                <Medium text='Today, 8:56pm?' className=' text-xs' />
-              </div>
-            </Flex>
-            <div className=' mt-2 '>                         
-      <button className=' px-4 py-1 bg-signBtn text-white rounded-lg text-xl'>Add</button>
-            </div>
-          </Flex>
-          <div className='border  mt-2'></div>
-                        </div>
-                    ))
-                }
+        <div>
+           {
+            showBlock.map((item)=>{
+             return <div>
+              <Flex className=' mt-5 justify-between'>
+           <Flex className='gap-x-5'>
+             <Image src={Friend1} alt={Friend1} />
+             <div className=' mt-2 '>
+             <SubHeading  text={item.block} />
+             <SubHeading  text={item.blockby} />
+               <Medium text='Today, 8:56pm?' className=' text-xs' />
+             </div>
+           </Flex>
+           <div className=' mt-2 '>                         
+     <button onClick={(()=>handleUnblock(item))} className=' px-4 py-1 bg-signBtn text-white rounded-lg text-xl'>Unblock</button>
+           </div>
+         </Flex>
+         <div className='border  mt-2'></div>
+           </div>
+            })
+           }
+                   
           
         </div>
   

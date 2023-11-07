@@ -20,22 +20,37 @@ function Friends({ className }) {
       let arr = []
       snapshot.forEach(item => {
         if (data.uid === item.val().receiverid || data.uid === item.val().senderid) {
-          arr.push({ ...item.val(),frId: item.key})
+          arr.push({ ...item.val(),frId:item.key })
         }
 
       })
       setfriendAccept(arr)
     })
   }, [])
-
-  // const [block, setblock] = useState(false)
-
   const handleBlockList = (item) => {
-    set(push(ref(db, 'block/')), {
-     ...item
-    }).then(()=>{
-      remove((ref(db, 'friend/'+item.frId)))
-    })  
+    if (data.uid == item.senderid) {
+      set(push(ref(db, 'block/')), {
+        block: item.receivername,
+        blockid: item.receiverid,
+        blockby: item.sendername,
+        blockbyid: item.senderid,
+        // id:item.frId
+      }).then(() => {
+        remove(ref(db, 'friend/' + item.frId))
+
+      })
+    } else {
+      set(push(ref(db, 'block/')), {
+        block: item.sendername,
+        blockid: item.senderid,
+        blockby: item.receivername,
+        blockbyid: item.receiverid,
+        // id:item.frId
+      }).then(() => {
+        remove(ref(db, 'friend/' + item.frId))
+
+      })
+    }
   }
 
 
@@ -57,7 +72,7 @@ function Friends({ className }) {
                   <div className=' mt-2 '>
                     <SubHeading text=
                       {
-                     data.uid == item.senderid ? item.receivername : item.sendername
+                        data.uid == item.senderid ? item.receivername : item.sendername
                       }
                     />
                     <Medium text='Dinner?' className=' text-xs' />
