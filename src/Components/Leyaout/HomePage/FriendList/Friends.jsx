@@ -27,31 +27,28 @@ function Friends({ className }) {
       setfriendAccept(arr)
     })
   }, [])
-  const handleBlockList = (item) => {
-    if (data.uid == item.senderid) {
+  
+   const handleBlockList=(item)=>{
+    if(data.uid==item.senderid){
       set(push(ref(db, 'block/')), {
-        block: item.receivername,
-        blockid: item.receiverid,
-        blockby: item.sendername,
-        blockbyid: item.senderid,
-        // id:item.frId
-      }).then(() => {
-        remove(ref(db, 'friend/' + item.frId))
-
-      })
-    } else {
+     block:item.receivername,
+     blockid:item.receiverid,
+     blockby:item.sendername,
+     blockbyid:item.senderid,
+    }).then(() => {
+        remove((ref(db, 'friend/' + item.frId)))
+        })
+    }else{
       set(push(ref(db, 'block/')), {
-        block: item.sendername,
-        blockid: item.senderid,
-        blockby: item.receivername,
-        blockbyid: item.receiverid,
-        // id:item.frId
-      }).then(() => {
-        remove(ref(db, 'friend/' + item.frId))
-
+        block:item.sendername,
+        blockid:item.senderid,
+        blockby:item.receivername,
+        blockbyid:item.receiverid
+        }).then(() => {
+           remove((ref(db, 'friend/' + item.frId)))
       })
     }
-  }
+   }
 
 
   return (
