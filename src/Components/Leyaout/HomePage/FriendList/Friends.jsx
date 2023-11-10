@@ -36,7 +36,7 @@ function Friends({ className }) {
      blockby:item.sendername,
      blockbyid:item.senderid,
     }).then(() => {
-        remove((ref(db, 'friend/' + item.frId)))
+        remove(ref(db, 'friend/' + item.frId))
         })
     }else{
       set(push(ref(db, 'block/')), {

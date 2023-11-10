@@ -18,24 +18,23 @@ function Block({ className }) {
     onValue(blockRef, (snapshot) => {
       let arr = [];
       snapshot.forEach((item)=>{
-        console.log(item.val());
-    if(data.uid == item.val().blockid){
+    if(data.uid == item.val().blockbyid){
     arr.push({
-      blockby:item.val().blockby,
-      blockbyid:item.val().blockbyid,
+      block:item.val().block,
+      blockid:item.val().blockid,
       id:item.key
     }) }
     else{
       arr.push({
-        block:item.val().block,
-        blockid:item.val().blockid,
+        blockby:item.val().blockby,
+        blockbyid:item.val().blockbyid,
         id:item.key,
       }) } setshowBlock(arr)
       })
     })
    
   }, [])
-  console.log(showBlock);
+  
   const handleUnblock=(item)=>{
     console.log(item);
     set(push(ref(db, 'friend/')),{
@@ -44,7 +43,7 @@ function Block({ className }) {
       receivername:data.displayName,
       receiverid:data.uid,
     }).then(() => {
-      remove((ref(db, 'block/' + item.id)))
+      remove(ref(db, 'block/' + item.id))
       })
      }
   return (

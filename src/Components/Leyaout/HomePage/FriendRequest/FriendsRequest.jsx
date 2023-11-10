@@ -34,26 +34,13 @@ const FriendsRequest = ({ className }) => {
       })
 
    }, [])
-   //     useEffect(() => {
-   //     const userRef = ref(db, 'users/');
-   //     onValue(userRef, (snapshot) => {
-   //       let arr = []
-   //       snapshot.forEach(item => {
-   //          if (data.uid != item.key) {
-   //             arr.push({ ...item.val(), userid: item.key });
-   //           }
-
-   //       })
-   //       setuserList(arr)
-   //     });
-   //   }, [])
-
+  
    const handleFriendList = (item) => {
       set(push(ref(db, 'friend/')), {
          ...item
       }).then(() => {
          remove((ref(db, 'friendrequest/' + item.id)))
-         // remove(( ref(db,'users/'+item.id)))
+        
       })
    }
 
