@@ -80,10 +80,7 @@ function Friends({ className }) {
                   <button onClick={() => handleBlockList(item)} className='bg-red-600 hover:bg-red-900 duration-700 hover:scale-110 text-white py-1 px-5 text-lg rounded-lg'>Block</button>
                 </div>
 
-                {/* <div className=' relative'>
-                  <button onClick={() => handleBlockList(item)} className='bg-signBtn text-white py-1 px-5 text-lg rounded-lg'>Friend</button>
-                </div> */}
-              </Flex>
+               </Flex>
 
 
               <div className='border  mt-2'></div>

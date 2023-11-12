@@ -18,6 +18,7 @@ import User from './UserList/User';
 import FriendsRequest from './FriendRequest/FriendsRequest';
 import { RotatingLines } from 'react-loader-spinner'
 import Block from './BlockPart/Block';
+import MyGroup from './MyGroupPart/MyGroup';
 function HomePage() {
   const dispatch=useDispatch()
   const data=useSelector(state=>state.userLoginInfo.userInfo)
@@ -81,8 +82,8 @@ function HomePage() {
 
       <div className=' w-[380px]'>
      <Friends /> 
-     
-      </div>
+     <MyGroup/>
+     </div>
       
       <div className=' w-[380px] '>
      <User /> 

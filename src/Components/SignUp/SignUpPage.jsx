@@ -27,10 +27,10 @@ function SignUpPage() {
    const [FullNameErr, setFullNameErr] = useState('')
    const [PasswordErr, setPasswordErr] = useState('')
    const [PasswordShow, setPasswordShow] = useState(false)
+
    const handleEmail = event => {
       setEmail(event.target.value);
       setEmailErr("")
-
    };
 
 
@@ -52,7 +52,6 @@ function SignUpPage() {
                displayName: FullName,
                photoURL: '/src/assets/white1.jpg'
             }).then(() => {
-
                toast.success('Registration Done,Go LoginPage after verify Your Email');
                setEmail('')
                setFullName('')
