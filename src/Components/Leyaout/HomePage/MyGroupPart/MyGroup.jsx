@@ -7,6 +7,7 @@ import Friend1 from '../../../Photo/Friend1.png'
 import Medium from '../Medium'
 import { getDatabase, onValue, ref } from 'firebase/database'
 import { useSelector } from 'react-redux'
+import {MdOutlineGroupOff} from 'react-icons/md'
 function MyGroup({className}) {
     const data = useSelector(state => state.userLoginInfo.userInfo)
     const db=getDatabase()
@@ -39,40 +40,44 @@ function MyGroup({className}) {
         <PiDotsThreeOutlineVerticalDuotone className='mt-1 text-signBtn' />
       </Flex >
       {
-        myGroupShow.map((item)=>{
-           return <div className=' relative '>
-          <div className='group'>
-            <Flex className=' mt-5 justify-between'>
-              <Flex className=" gap-x-4">
-                <Image src={Friend1} alt={Friend1} />
-                <div className=' mt-2 '>
-                  <SubHeading text=
-                  {item.groupname}
-                  />
-                  <Medium text=
-                  {
-                    item.grouptagname
-                  }
-                   className=' text-xs' />
-                </div>
-              </Flex>
-              
+       myGroupShow.length==0
+       ?
+       <MdOutlineGroupOff className='flex justify-center text-5xl mt-14 mx-auto'/>
+       :
+       myGroupShow.map((item)=>{
+        return <div className=' relative '>
+       <div className='group'>
+         <Flex className=' mt-5 justify-between'>
+           <Flex className=" gap-x-4">
+             <Image src={Friend1} alt={Friend1} />
+             <div className=' mt-2 '>
+               <SubHeading text=
+               {item.groupname}
+               />
+               <Medium text=
+               {
+                 item.grouptagname
+               }
+                className=' text-xs' />
+             </div>
+           </Flex>
+           
 
-             </Flex>
+          </Flex>
 
 
-            <div className='border  mt-2'></div>
+         <div className='border  mt-2'></div>
 
-          </div>
-        {/* {  block &&
-          <div className=' '>
-            <h2>adshf</h2>
-            <h2>hello</h2>
-          </div>
-        } */}
-      </div>
+       </div>
+     {/* {  block &&
+       <div className=' '>
+         <h2>adshf</h2>
+         <h2>hello</h2>
+       </div>
+     } */}
+   </div>
 
-        })
+     })
       }
 
       

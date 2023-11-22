@@ -13,8 +13,7 @@ import { getDatabase, ref, onValue, set, push } from "firebase/database";
 import Image from '../../../Image'
 import { useSelector } from 'react-redux'
 import { BsThreeDots } from 'react-icons/bs'
-import { BiBlock } from 'react-icons/bi'
-import { MdOutlineCancel } from 'react-icons/md'
+import { RiSearchLine } from 'react-icons/ri'
 
 function User({ className }) {
   const data = useSelector(state => state.userLoginInfo.userInfo)
@@ -24,6 +23,8 @@ function User({ className }) {
   const [friendAccept, setfriendAccept] = useState([])
   const [friendBlock, setfriendBlock] = useState([])
   const db = getDatabase();
+  const [Usersearch,setUserSearch]=useState([]);
+
 
   useEffect(() => {
     const userRef = ref(db, 'users/');
@@ -80,44 +81,81 @@ function User({ className }) {
       setfriendBlock(arr)
     })
   }, [])
-  console.log(friendBlock);
-
-  // const dropRef = useRef(null);
-
-//   const handleDropSow=(e)=>{
-//   if(e.target.classList[0]=="click-btn"){
-//     if(dropRef.current.style.display=="block"){
-//       dropRef.current.style.display="none"
-//     }else{
-//       dropRef.current.style.display="block"
-//     }
-//   }
-//   else{
-//     if(!dropRef.current.contains(e.target)){
-//       if(dropRef.current.style.display=="block"){
-//           dropRef.current.style.display = "none"
-//       }
-//   }
-//   }
-// }
-
-//  const handleBlock=(item)=>{
-//   console.log(item);
-//  }
+ 
+const handleUsersSearch=((e)=>{    
+  let arr=[];
+  userData.filter((item)=>{
+if(item.username.toLowerCase().includes(e.target.value.toLowerCase())){
+  arr.push(item)
+  setUserSearch(arr)
+}
+  })
+})
   return (
     <>
 
       <section className={` ${className}`}>
 
+      <div className='relative'>
+         <input onChange={handleUsersSearch}  type="text" placeholder='search' className='w-full px-24 py-3 shadow-shadow rounded-lg outline-none ' />
+         <RiSearchLine className='absolute top-4 text-signBtn  left-3'/>
+         <PiDotsThreeOutlineVerticalDuotone className='absolute top-4 right-3 text-signBtn'/>
+         </div>
 
-        <div className='pt-4 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll h-[365px]'>
+
+        <div className='pt-4 mt-3 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll  h-[300px]'>
           <Flex className=' justify-between'>
             <SubHeading text='User List' className=' text-signBtn' />
             <PiDotsThreeOutlineVerticalDuotone className='mt-1 text-signBtn' />
           </Flex >
 
+          
+
           <div className='relative'>
-            {
+            <div>
+             {
+              Usersearch.length>0
+               ?
+              Usersearch.map((item, index) => (
+                <div key={index} className=''>
+                  <Flex className=' mt-5 justify-between '>
+                    <Flex className='gap-x-5'>
+                      <Image src={Friend1} alt={Friend1} />
+                      <div className=' mt-2 '>
+                        <SubHeading text={item.username} className=' text-lg' />
+                        <Medium text='Today, 8:56pm?' className=' text-xs' />
+                      </div>
+                    </Flex>
+                    <div className='mt-2 '>
+                      {
+                        friendAccept.includes(data.uid + item.userid)
+                          ||
+                          friendAccept.includes(item.userid + data.uid)
+                          ?
+               <BsThreeDots className='bg-gray-200 hover:bg-gray-500 w-10 h-10  rounded-full px-2  hover:text-white duration-500'/>
+                          :
+                          friendrequest.includes(data.uid + item.userid)
+                            ||
+                            friendrequest.includes(item.userid + data.uid)
+                            ?
+                            <button className=' px-4 py-1 bg-signBtn text-white rounded-lg text-xl'>Pending</button>
+                            :
+                            friendBlock.includes(data.uid+item.userid) || 
+                            friendBlock.includes(item.userid+data.uid)
+                            ?
+                            <button  className=' px-1 py-1 bg-red-600 text-white rounded-lg text-xl'>Blocked🤧</button>
+                            :
+                            <button onClick={() => handleFriendRequest(item)} className=' px-4 py-1 bg-signBtn text-white rounded-lg text-xl'>Add 👉</button>
+
+                      }
+
+                    </div>
+                  </Flex>
+                  <div className='border  mt-2'></div>
+                </div>
+              )
+              )
+              :
               userData.map((item, index) => (
                 <div key={index} className=''>
                   <Flex className=' mt-5 justify-between '>
@@ -157,8 +195,15 @@ function User({ className }) {
                 </div>
               )
               )
-            }
-
+             }
+            
+               
+             
+           
+           
+             
+          
+ </div>
 
           </div>
 

@@ -16,6 +16,7 @@ import { LineWave } from 'react-loader-spinner'
 import { getDatabase, onValue, push, ref, set } from 'firebase/database'
 import { useSelector } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify';
+import {MdOutlineGroupOff} from 'react-icons/md'
 const Group = ({ className, midText, subText, src }) => {
    const data = useSelector(state => state.userLoginInfo.userInfo)
    const [show, setshow] = useState(false)
@@ -149,27 +150,32 @@ const [GroupListShow,setGroupListShow]=useState([])
                      </div>
                      :
                    <div>
-                   {
-                     GroupListShow.map((item)=>{
-                      return  <div>
-                        <Flex className=' mt-5 justify-between '>
-                           <Flex>
-                              <Image className=" w-[50px] h-[50px] rounded-full" src={data.photoURL} alt={Group1} />
-                              <div className=' ml-4'>
-                                 <SubHeading text={
-                                    item.groupName
-                                 } className=' text-lg' />
-                                 <Medium text={
-                                    item.groupTagName
-                                 } className=' text-sm' />
-                              </div>
-                           </Flex>
-                           <Btn text='Join' className=' h-9 my-auto ' />
-                        </Flex>
-                        <div className='border mt-4'></div>
-                     </div>
-                     })
-                   }                 
+                     {
+                        GroupListShow.length==0
+                        ?
+                       <MdOutlineGroupOff className='flex justify-center text-5xl mt-14 mx-auto'/>
+                        :
+                        GroupListShow.map((item)=>{
+                           return  <div>
+                             <Flex className=' mt-5 justify-between '>
+                                <Flex>
+                                   <Image className=" w-[50px] h-[50px] rounded-full" src={data.photoURL} alt={Group1} />
+                                   <div className=' ml-4'>
+                                      <SubHeading text={
+                                         item.groupName
+                                      } className=' text-lg' />
+                                      <Medium text={
+                                         item.groupTagName
+                                      } className=' text-sm' />
+                                   </div>
+                                </Flex>
+                                <Btn text='Join' className=' h-9 my-auto ' />
+                             </Flex>
+                             <div className='border mt-4'></div>
+                          </div>
+                          })
+                     }
+                                 
                    </div>
 
                }
