@@ -25,7 +25,6 @@ function User({ className }) {
   const db = getDatabase();
   const [Usersearch,setUserSearch]=useState([]);
 
-
   useEffect(() => {
     const userRef = ref(db, 'users/');
     onValue(userRef, (snapshot) => {
