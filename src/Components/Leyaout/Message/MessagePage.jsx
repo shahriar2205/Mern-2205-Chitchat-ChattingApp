@@ -14,7 +14,7 @@ import { userLoginInfo } from '../../Slices/userSlice'
 import User from '../HomePage/UserList/User'
 import Block from '../HomePage/BlockPart/Block'
 
-function MessagePage() {
+function MessagePage({active}) {
     const [loading,setloading]=useState(true)
     const data=useSelector(state=>state.userLoginInfo.userInfo)
     const dispatch=useDispatch()
@@ -49,7 +49,7 @@ function MessagePage() {
                   <Flex className=' px-5 py-2 gap-x-8'>
 
                   <div className='w-[150px]'>
-                <SideBar />
+                <SideBar active="Messages" />
                 </div> 
                  <Flex className=" gap-x-16 ">
            <div className=''>
@@ -58,7 +58,7 @@ function MessagePage() {
                <RiSearchLine className='absolute top-4 text-signBtn  left-3'/>
                <PiDotsThreeOutlineVerticalDuotone className='absolute top-4 right-3 text-signBtn'/>
                </div>
-                <Friends friendsClass="h-[292px]" className="mt-5" /> 
+                <Friends friendsClass="h-[280px]" className="mt-5" /> 
            <MyGroup/>
                  </div> 
                  </Flex>

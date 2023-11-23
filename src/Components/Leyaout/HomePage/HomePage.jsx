@@ -19,7 +19,7 @@ import FriendsRequest from './FriendRequest/FriendsRequest';
 import { RotatingLines } from 'react-loader-spinner'
 import Block from './BlockPart/Block';
 import MyGroup from './MyGroupPart/MyGroup';
-function HomePage() {
+function HomePage({active}) {
   const dispatch=useDispatch()
   const data=useSelector(state=>state.userLoginInfo.userInfo)
   const navigate = useNavigate();
@@ -66,7 +66,7 @@ function HomePage() {
         <Flex className=' px-5 py-2 gap-x-8'>
 
             <div className='w-[150px]'>
-          <SideBar />
+          <SideBar active="Home" />
           </div> 
 
      <Flex className=" gap-x-16">
