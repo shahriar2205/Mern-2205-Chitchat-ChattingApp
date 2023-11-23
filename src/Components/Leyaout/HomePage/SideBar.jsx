@@ -1,6 +1,6 @@
 import React, { createRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Flex from '../../Flex';
 import {SiHomeassistant} from 'react-icons/si'
 import {AiFillMessage} from 'react-icons/ai'
@@ -101,10 +101,14 @@ function SideBar({className}) {
     </div>
     <div className=' mt-28  text-4xl relative after:absolute py-3 flex justify-center after:content-[""] after:top-0 after:z-[-1] z-10   after:left-[-16px] after:rounded-l-lg after:bg-white after:w-[111px] after:h-full before:absolute before:content-[""] before:h-full before:w-2 before:bg-signBtn  before:rounded-l-lg before:top-0 before:left-[89px]'>
 
-     <SiHomeassistant className=' text-signBtn items-center text-center mx-auto '/>
+<Link to='/home'>
+<SiHomeassistant className=' text-signBtn items-center text-center mx-auto '/>
+</Link>
       </div> 
   <Flex className="flex-col text-4xl gap-y-16 mt-10 text-[#BAD1FF] items-center ">
-  < AiFillMessage className=''/>
+ <Link to='/message'>
+ < AiFillMessage className=''/>
+ </Link>
     < RiNotification3Fill/>
     <TbSettingsCog/>
     <AiOutlineLogout onClick={handleLogOut} className=' mt-6  text-white'/>
