@@ -50,10 +50,9 @@ const FriendsRequest = ({ className }) => {
          <div>
             <div className='py-4 shadow-shadow px-3 mt-4 rounded-xl overflow-y-scroll h-[300px]'>
                <Flex className=' justify-between'>
-                  <SubHeading text='Friend  Request ' className=' text-signBtn' />
+                  <SubHeading text='Friend  Request' className=' text-signBtn' />
                   <PiDotsThreeOutlineVerticalDuotone className='mt-1 text-signBtn' />
                </Flex>
-
                <div>
                   {
                      friedRequestList.map((item, index) => {

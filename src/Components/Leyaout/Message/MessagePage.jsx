@@ -31,7 +31,7 @@ function MessagePage() {
   localStorage.setItem('userLoginInfo',JSON.stringify(userLoginInfo(user.user)))
 });
     return (
-        <section className='message'>
+        <section className={`message `}>
             {
                   loading ?(
                     <div className="flex justify-center items-center h-screen">
@@ -51,19 +51,20 @@ function MessagePage() {
                   <div className='w-[150px]'>
                 <SideBar />
                 </div> 
-      
-           <Flex className=" gap-x-16">
-           <div className=' w-[427px] '>
-               {/* <div className='relative'>
+                 <Flex className=" gap-x-16 ">
+           <div className=''>
+               <div className='relative mx-auto'>
                <input type="text" placeholder='search' className=' w-full px-24 py-3 shadow-shadow rounded-lg outline-none ' />
                <RiSearchLine className='absolute top-4 text-signBtn  left-3'/>
                <PiDotsThreeOutlineVerticalDuotone className='absolute top-4 right-3 text-signBtn'/>
-               </div> */}
-                <Friends friendsClass="h-[200px]" /> 
+               </div>
+                <Friends friendsClass="h-[292px]" className="mt-5" /> 
            <MyGroup/>
                  </div> 
                  </Flex>
-      
+             <div className='chatt'>
+           
+             </div>
              </Flex>
             }
         </section>
