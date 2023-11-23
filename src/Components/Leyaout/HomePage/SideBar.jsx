@@ -110,7 +110,9 @@ function SideBar({className}) {
  <Link to="/message">
  < AiFillMessage className=''/>
  </Link>
+    <Link to="/notification">
     < RiNotification3Fill/>
+    </Link>
     <TbSettingsCog/>
     <AiOutlineLogout onClick={handleLogOut} className=' mt-6  text-white'/>
   </Flex>

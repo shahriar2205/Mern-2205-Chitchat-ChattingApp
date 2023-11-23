@@ -83,7 +83,7 @@ const [GroupListShow,setGroupListShow]=useState([])
       <section className={`${className} GroupPart `} >
 
          <div>
-            <div className=' relative py-4 shadow-shadow px-3 mt-4 rounded-xl overflow-y-scroll h-[300px]'>
+            <div className={` relative py-4 shadow-shadow px-3 mt-4 rounded-xl overflow-y-scroll h-[300px]` }>
                <Flex className=' justify-between'>
                   <SubHeading text='Groups List ' className=' text-signBtn' />
                   <PiDotsThreeOutlineVerticalDuotone className='mt-1 text-signBtn' />

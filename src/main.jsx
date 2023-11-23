@@ -15,6 +15,7 @@ import Forget from './Components/Leyaout/ForgetPass/Forget.jsx'
 import { store } from './assets/Stores/Store.jsx'
 import { Provider } from 'react-redux'
 import MessagePage from './Components/Leyaout/Message/MessagePage.jsx'
+import Notification from './Components/Leyaout/Notification/Notification.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,9 +29,13 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <HomePage></HomePage>
-  }, {
+  },
+   {
     path: "/message",
     element: <MessagePage/>
+  }, {
+    path: "/notification",
+    element: <Notification/>
   },
   {
     path: "/forget",

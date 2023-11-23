@@ -34,7 +34,7 @@ function MyGroup({className}) {
         console.log(myGroupShow);
   return (
     <section className={` ${className}`}>
-    <div className='pt-4 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll h-[365px]'>
+    <div className='mt-7 py-4 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll h-[310px]'>
       <Flex className=' justify-between'>
         <SubHeading text='My Groups' className=' text-signBtn' />
         <PiDotsThreeOutlineVerticalDuotone className='mt-1 text-signBtn' />

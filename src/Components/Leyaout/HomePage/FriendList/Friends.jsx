@@ -9,7 +9,7 @@ import { getDatabase, onValue, push, ref, remove, set } from 'firebase/database'
 import { useSelector } from 'react-redux'
 
 
-function Friends({ className }) {
+function Friends({ className,friendsClass}) {
   const data = useSelector(state => state.userLoginInfo.userInfo)
   const [friendAccept, setfriendAccept] = useState([])
   const db = getDatabase();
@@ -53,7 +53,7 @@ function Friends({ className }) {
 
   return (
     <section className={` ${className}`}>
-      <div className='pt-4 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll h-[365px]'>
+      <div className={`pt-4 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll h-[365px] ${friendsClass}`}>
         <Flex className=' justify-between'>
           <SubHeading text='Friends' className=' text-signBtn' />
           <PiDotsThreeOutlineVerticalDuotone className='mt-1 text-signBtn' />
