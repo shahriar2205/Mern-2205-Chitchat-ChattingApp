@@ -99,14 +99,15 @@ function SideBar({className}) {
         </Flex> 
         <h2 className='ml-[-25px] mt-3 text-[#f0e9ecaa] font-nos  border-b-4 border-dotted text-xl	'>{data.displayName}</h2>
     </div>
+<Link to="/home">
     <div className=' mt-28  text-4xl relative after:absolute py-3 flex justify-center after:content-[""] after:top-0 after:z-[-1] z-10   after:left-[-16px] after:rounded-l-lg after:bg-white after:w-[111px] after:h-full before:absolute before:content-[""] before:h-full before:w-2 before:bg-signBtn  before:rounded-l-lg before:top-0 before:left-[89px]'>
 
-<Link to='/home'>
 <SiHomeassistant className=' text-signBtn items-center text-center mx-auto '/>
-</Link>
       </div> 
+</Link>
+
   <Flex className="flex-col text-4xl gap-y-16 mt-10 text-[#BAD1FF] items-center ">
- <Link to='/message'>
+ <Link to="/message">
  < AiFillMessage className=''/>
  </Link>
     < RiNotification3Fill/>
