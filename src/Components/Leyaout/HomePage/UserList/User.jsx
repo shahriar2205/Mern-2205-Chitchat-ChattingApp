@@ -83,12 +83,18 @@ function User({ className }) {
  
 const handleUsersSearch=((e)=>{    
   let arr=[];
-  userData.filter((item)=>{
-if(item.username.toLowerCase().includes(e.target.value.toLowerCase())){
-  arr.push(item)
-  setUserSearch(arr)
-}
-  })
+  if(e.target.length==0){
+    setUserSearch([])
+  }
+  else{
+    userData.filter((item)=>{
+      if(item.username.toLowerCase().includes(e.target.value.toLowerCase())){
+        arr.push(item)
+        setUserSearch(arr)
+      }
+        })
+  }
+ 
 })
   return (
     <>
