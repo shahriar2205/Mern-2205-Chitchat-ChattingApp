@@ -53,7 +53,7 @@ function Friends({ className,friendsClass}) {
 
   return (
     <section className={` ${className}`}>
-      <div className={`pt-4 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll h-[365px] ${friendsClass}`}>
+      <div className={`pt-4 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll  ${friendsClass}`}>
         <Flex className=' justify-between'>
           <SubHeading text='Friends' className=' text-signBtn' />
           <PiDotsThreeOutlineVerticalDuotone className='mt-1 text-signBtn' />

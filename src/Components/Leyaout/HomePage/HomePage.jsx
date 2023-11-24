@@ -81,7 +81,7 @@ function HomePage({active}) {
            </div> 
 
       <div className=' w-[380px]'>
-     <Friends /> 
+     <Friends friendsClass="h-[365px]" /> 
      <MyGroup/>
      </div>
       

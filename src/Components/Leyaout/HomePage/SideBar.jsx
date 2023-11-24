@@ -116,7 +116,7 @@ function SideBar({ className,active }) {
             < RiNotification3Fill />
           </Link>
           <TbSettingsCog />
-          <AiOutlineLogout onClick={handleLogOut} className=' mt-6  text-white' />
+          <AiOutlineLogout onClick={handleLogOut} className='  text-white' />
         </Flex>
       </div>
       {
