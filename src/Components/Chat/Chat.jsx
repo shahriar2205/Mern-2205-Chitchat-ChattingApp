@@ -23,7 +23,7 @@ function Chat({className}) {
           </Flex>
           <PiDotsThreeOutlineVerticalDuotone className=' text-signBtn text-2xl mt-4  font-bold ' />
         </Flex>
-        <div className=' border mt-3'></div>
+        <div className=' border mt-2'></div>
       </div>
       
  
@@ -80,6 +80,7 @@ function Chat({className}) {
       {/* sender photo design */}
       </div>
  </div>
+ <div className='border'></div>
  </div>
  
       </div>
