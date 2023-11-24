@@ -3,7 +3,6 @@ import Flex from '../Flex'
 import msg from '../Photo/msg.png'
 import {PiDotsThreeOutlineVerticalDuotone} from 'react-icons/pi'
 import signPhoto from "../../assets/SignUpImg.png"
-import CustomScroll from 'react-custom-scroll';
 function Chat({className}) {
   return (
    <section className={`${className}`}>
@@ -29,8 +28,7 @@ function Chat({className}) {
       
  
  <div className=' py-4'>
- <CustomScroll >
- <div className='  overflow-x-hidden h-[510px]  pl-3 '>
+ <div className=' overflow-y-scroll  overflow-x-hidden h-[510px]  pl-3 '>
         {/* receiver design */}
       <div className=' mt-14'>
         <div className='bg-[#F1F1F1] py-2 px-10 inline-block rounded-lg relative'>
@@ -82,7 +80,6 @@ function Chat({className}) {
       {/* sender photo design */}
       </div>
  </div>
- </CustomScroll>
  </div>
  
       </div>
