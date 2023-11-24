@@ -2,6 +2,7 @@ import React from 'react'
 import Flex from '../Flex'
 import msg from '../Photo/msg.png'
 import {PiDotsThreeOutlineVerticalDuotone} from 'react-icons/pi'
+import { LuTriangle } from "react-icons/lu";
 function Chat() {
   return (
     <div className='chatt w-[800px] '>
@@ -23,6 +24,19 @@ function Chat() {
         <div className=' border mt-3'></div>
       </div>
       
+      {/* receiver design */}
+      <div className=' mt-14'>
+        <div className='bg-[#F1F1F1] py-2 px-10 inline-block rounded-lg relative'>
+           <h3>Hi there</h3>
+           <svg
+           className=' absolute bottom-[-3px] left-[-8px]' width="20" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.3186 1.17537C13.1181 0.0939677 14.7356 0.0939677 15.5351 1.17537L27.0944 16.8111C28.0703 18.1312 27.1279 20 25.4861 20H2.36753C0.725776 20 -0.216681 18.1312 0.759296 16.8111L12.3186 1.17537Z" fill="#F1F1F1"/>
+</svg>
+
+        </div>
+      </div>
+      {/* receiver design */}
+
     </div>
   </div>
   )
