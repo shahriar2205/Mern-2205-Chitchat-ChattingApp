@@ -3,11 +3,13 @@ import Flex from '../Flex'
 import msg from '../Photo/msg.png'
 import {PiDotsThreeOutlineVerticalDuotone} from 'react-icons/pi'
 import signPhoto from "../../assets/SignUpImg.png"
-function Chat() {
+function Chat({className}) {
   return (
-    <div className='chatt w-[700px] '>
-    <div className='shadow-shadow px-14 py-7 h-[700px] overflow-y-scroll rounded-lg'>
-      <div>
+   <section className={`${className}`}>
+     <div className='chatt w-[800px] shadow-shadow px-14 py-7 '>
+    <div className=' rounded-lg   '>
+   
+      <div className=''>
         <Flex className=" justify-between  ">
           <Flex className="gap-x-6">
             <div className=' relative'>
@@ -24,7 +26,10 @@ function Chat() {
         <div className=' border mt-3'></div>
       </div>
       
-      {/* receiver design */}
+ 
+ <div className=' py-4'>
+ <div className=' overflow-y-scroll  overflow-x-hidden h-[510px]  pl-3 '>
+        {/* receiver design */}
       <div className=' mt-14'>
         <div className='bg-[#F1F1F1] py-2 px-10 inline-block rounded-lg relative'>
            <h3>Hi there</h3>
@@ -49,6 +54,7 @@ function Chat() {
       {/* receiver photo design  */}
  
  {/* sender design */}
+ <div className='pr-10'> 
  <div className=' mt-2 text-right '>
         <div className=' py-2 px-10 inline-block rounded-lg relative bg-signBtn text-white'>
            <h3 >Hi there</h3>
@@ -72,9 +78,15 @@ function Chat() {
         </div>
       </div>
       {/* sender photo design */}
+      </div>
+ </div>
+ </div>
+ 
+      </div>
 
     </div>
-  </div>
+   </section>
+
   )
 }
 
