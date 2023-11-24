@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react'
-import Flex from '../../../Flex'
-import SubHeading from '../SubHeading'
+
 import { PiDotsThreeOutlineVerticalDuotone } from 'react-icons/pi'
-import Friend1 from '../../../Photo/Friend1.png'
-import Image from '../../../Image'
-import Medium from '../Medium'
+import Friend1 from '../../Photo/Friend1.png'
+import Image from '../../Image'
 import { getDatabase, onValue, push, ref, remove, set } from 'firebase/database'
 import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import Flex from '../../Flex'
+import SubHeading from '../HomePage/SubHeading'
+import Medium from '../HomePage/Medium'
 
 
-function Friends({ className,friendsClass}) {
+function MessageFriends({ className,friendsClass}) {
   const data = useSelector(state => state.userLoginInfo.userInfo)
   const [friendAccept, setfriendAccept] = useState([])
   const db = getDatabase();
@@ -75,10 +76,7 @@ function Friends({ className,friendsClass}) {
                     <Medium text='Dinner?' className=' text-xs' />
                   </div>
                 </Flex>
-                <div className='  '>
-                  <p className=' text-center text-[8px] font-nos group-hover:scale-50 duration-700'>Friend</p>
-                  <button onClick={() => handleBlockList(item)} className='bg-red-600 hover:bg-red-900 duration-700 hover:scale-110 text-white py-1 px-5 text-lg rounded-lg'>Block</button>
-                </div>
+             
 
                </Flex>
 
@@ -95,4 +93,4 @@ function Friends({ className,friendsClass}) {
   )
 }
 
-export default Friends
+export default MessageFriends
