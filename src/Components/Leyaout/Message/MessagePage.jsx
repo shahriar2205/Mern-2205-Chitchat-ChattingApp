@@ -47,7 +47,7 @@ function MessagePage({ active }) {
             <div className='w-[150px]'>
               <SideBar active="Messages" />
             </div>
-            <Flex className=" gap-x-16 ml-7 ">
+            <Flex className=" gap-x-28 ml-7 ">
               <Flex className="flex-col w-[400px]">
                 <MessageFriends friendsClass="h-[340px]" className="mt-5" />
                 <MyGroup />
