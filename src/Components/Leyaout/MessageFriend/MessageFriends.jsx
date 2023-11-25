@@ -3,7 +3,7 @@ import { PiDotsThreeOutlineVerticalDuotone } from 'react-icons/pi'
 import Friend1 from '../../Photo/Friend1.png'
 import Image from '../../Image'
 import { getDatabase, onValue, push, ref, remove, set } from 'firebase/database'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import Flex from '../../Flex'
 import SubHeading from '../HomePage/SubHeading'
@@ -14,6 +14,9 @@ function MessageFriends({ className,friendsClass}) {
   const data = useSelector(state => state.userLoginInfo.userInfo)
   const [friendAccept, setfriendAccept] = useState([])
   const db = getDatabase();
+ const activeChat=useSelector(state => state.activeChat.active)
+ console.log(activeChat);
+ const dispatch=useDispatch();
 
   useEffect(() => {
     const friendAcceptList = ref(db, 'friend/');
@@ -52,7 +55,7 @@ function MessageFriends({ className,friendsClass}) {
    }
 
  const handleActiveFriend =()=>{
-  console.log("okk cool");
+  dispatch
  }
   return (
     <section className={` ${className}`}>
