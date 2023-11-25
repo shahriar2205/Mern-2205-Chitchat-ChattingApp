@@ -15,7 +15,9 @@ function Chat({className}) {
       setinputSize(false)
     }
   }
-  
+  const handleSend =()=>{
+   
+  }
   return (
    <section className={`${className}`}>
      <div className='chatt w-[800px]  h-[690px] shadow-shadow px-14 py-7 rounded-lg '>
