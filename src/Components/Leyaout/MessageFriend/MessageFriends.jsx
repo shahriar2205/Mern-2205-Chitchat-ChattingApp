@@ -16,7 +16,7 @@ function MessageFriends({ className,friendsClass}) {
   const db = getDatabase();
  const activeChat=useSelector(state => state.activeChat.active)
  console.log(activeChat);
- const dispatch=useDispatch();
+
 
   useEffect(() => {
     const friendAcceptList = ref(db, 'friend/');
