@@ -7,7 +7,14 @@ import "../Chat/Chat.css"
 import { IoIosSend } from "react-icons/io";
 
 function Chat({className}) {
- 
+  const [inputSize,setinputSize]=useState(false)
+  const handleChat =(e)=>{
+    if(e.target.value.length >0){
+      setinputSize(true)
+    }else{
+      setinputSize(false)
+    }
+  }
   
   return (
    <section className={`${className}`}>
