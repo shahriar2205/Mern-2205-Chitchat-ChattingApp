@@ -5,6 +5,8 @@ import {PiDotsThreeOutlineVerticalDuotone} from 'react-icons/pi'
 import signPhoto from "../../assets/SignUpImg.png"
 import "../Chat/Chat.css"
 import { IoIosSend } from "react-icons/io";
+import { HiOutlineEmojiHappy } from "react-icons/hi";
+import { MdCameraAlt } from "react-icons/md";
 
 function Chat({className}) {
   const [inputSize,setinputSize]=useState(false)
@@ -99,8 +101,13 @@ function Chat({className}) {
 
 
  </div>
- <Flex className="gap-x-2 items-center ">
-  <input  onChange={handleChat} type="text" className={`py-2 bg-[#F1F1F1]  px-6 rounded-xl outline-none ${inputSize ? "w-[95%]" : "w-[80%] focus:w-[95%]"}`} />
+ <Flex className="gap-x-2 items-center  relative">
+  <input  onChange={handleChat} type="text" placeholder='typing...' className={`py-2 bg-[#F1F1F1]  px-6 rounded-xl outline-none ${inputSize ? "w-[95%]" : "w-[80%] "}`} />
+<Flex className={`  absolute ${inputSize ? " top-[11px] right-[60px]" : " top-[10px] right-[150px]" } gap-x-2 text-[#707070]`}>
+<HiOutlineEmojiHappy size={22} />
+  <MdCameraAlt size={22} />
+</Flex>
+
   <IoIosSend onClick={handleSend}   className=' bg-signBtn  text-4xl py-1 px-2 text-white rounded-lg' />
  </Flex>
  
