@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  userInfo: localStorage.getItem('userLoginInfo') ? JSON.parse(localStorage.getItem('userLoginInfo')) : null,
+ active:"jibon"
 }
 
-export const counterSlice = createSlice({
-  name: 'user',
+export const ActiveChatSlice = createSlice({
+  name: 'activeChat',
   initialState,
   reducers: {
-    userLoginInfo: (state,action) => {
-    state.userInfo=action.payload
+    activeChat: (state,action) => {
+    state.active=action.payload
 
     },
    
   },
 })
 
-export const {userLoginInfo} = counterSlice.actions
-export default counterSlice.reducer
+export const {activeChat} = ActiveChatSlice.actions
+export default ActiveChatSlice.reducer
