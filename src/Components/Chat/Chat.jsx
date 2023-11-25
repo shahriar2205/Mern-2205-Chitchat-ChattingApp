@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Flex from '../Flex'
 import msg from '../Photo/msg.png'
 import {PiDotsThreeOutlineVerticalDuotone} from 'react-icons/pi'
 import signPhoto from "../../assets/SignUpImg.png"
+import "../Chat/Chat.css"
+import { IoIosSend } from "react-icons/io";
+
 function Chat({className}) {
+ 
+  
   return (
    <section className={`${className}`}>
-     <div className='chatt w-[800px] shadow-shadow px-14 py-7 '>
+     <div className='chatt w-[800px]  h-[690px] shadow-shadow px-14 py-7 rounded-lg '>
     <div className=' rounded-lg   '>
    
       <div className=''>
@@ -27,8 +32,9 @@ function Chat({className}) {
       </div>
       
  
- <div className=' py-4'>
- <div className=' overflow-y-scroll  overflow-x-hidden h-[510px]  pl-3 '>
+ <div className=' py-4 h-[520px]'>
+ <div className=' hello  h-full overflow-x-hidden   pl-3 '>
+
         {/* receiver design */}
       <div className=' mt-14'>
         <div className='bg-[#F1F1F1] py-2 px-10 inline-block rounded-lg relative'>
@@ -80,8 +86,14 @@ function Chat({className}) {
       {/* sender photo design */}
       </div>
  </div>
- <div className='border'></div>
+ <div className='border '></div>
+
+
  </div>
+ <Flex className="gap-x-2 items-center ">
+  <input  onChange={handleChat} type="text" className={`py-2 bg-[#F1F1F1]  px-6 rounded-xl outline-none ${inputSize ? "w-[95%]" : "w-[80%] focus:w-[95%]"}`} />
+  <IoIosSend onClick={handleSend}   className=' bg-signBtn  text-4xl py-1 px-2 text-white rounded-lg' />
+ </Flex>
  
       </div>
 

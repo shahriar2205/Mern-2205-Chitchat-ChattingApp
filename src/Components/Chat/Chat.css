@@ -1,0 +1,24 @@
+input.input{
+   transition: all 0.6s ease;
+ }
+   .hello{
+    overflow-y: scroll;
+   
+   }
+   ::-webkit-scrollbar{
+    width: 4px;
+    
+     }
+    
+ ::-webkit-scrollbar-track{
+    background-color: white;
+ }
+ ::-webkit-scrollbar-thumb{
+    background-color: rgba(66, 57, 66, 0.8);
+ }
+  ::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(29, 17, 138, 0.6);
+    transition-duration: 0.5s;
+ }
+
+ 
