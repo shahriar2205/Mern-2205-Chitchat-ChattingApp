@@ -51,7 +51,9 @@ function MessageFriends({ className,friendsClass}) {
     }
    }
 
-
+ const handleActiveFriend =()=>{
+  console.log("okk cool");
+ }
   return (
     <section className={` ${className}`}>
       <div className={`pt-4 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll  ${friendsClass}`}>
@@ -62,7 +64,7 @@ function MessageFriends({ className,friendsClass}) {
 
         <div className=' relative '>
           {friendAccept.map(item => (
-            <div className='group'>
+            <div onClick={handleActiveFriend} className=''>
               <Flex className=' mt-5 justify-between'>
 
                 <Flex className=" gap-x-4">
