@@ -56,7 +56,11 @@ function MessageFriends({ className,friendsClass}) {
    }
 
  const handleActiveFriend =(item)=>{
- dispatch(activeChat)
+   if(data.uid ==item.receiverid){
+    dispatch(activeChat({id:item.senderid, name:item.sendername}))
+   }else{
+    dispatch(activeChat({id:item.receiverid, name:item.receivername}))
+   }
  }
   return (
     <section className={` ${className}`}>
