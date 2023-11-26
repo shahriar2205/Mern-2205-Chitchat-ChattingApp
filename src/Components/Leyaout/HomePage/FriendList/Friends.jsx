@@ -63,7 +63,6 @@ function Friends({ className,friendsClass}) {
           {friendAccept.map(item => (
             <div className='group'>
               <Flex className=' mt-5 justify-between'>
-
                 <Flex className=" gap-x-4">
                   <Image src={Friend1} alt={Friend1} />
                   <div className=' mt-2 '>
@@ -79,12 +78,8 @@ function Friends({ className,friendsClass}) {
                   <p className=' text-center text-[8px] font-nos group-hover:scale-50 duration-700'>Friend</p>
                   <button onClick={() => handleBlockList(item)} className='bg-red-600 hover:bg-red-900 duration-700 hover:scale-110 text-white py-1 px-5 text-lg rounded-lg'>Block</button>
                 </div>
-
                </Flex>
-
-
               <div className='border  mt-2'></div>
-
             </div>
           ))}
          

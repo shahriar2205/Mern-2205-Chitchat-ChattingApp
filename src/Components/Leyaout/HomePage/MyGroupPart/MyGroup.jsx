@@ -31,8 +31,7 @@ function MyGroup({className}) {
             })
             
         }, [])
-        console.log(myGroupShow);
-  return (
+       return (
     <section className={` ${className}`}>
     <div className='mt-7 py-4 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll h-[310px]'>
       <Flex className=' justify-between'>
@@ -44,8 +43,8 @@ function MyGroup({className}) {
        ?
        <MdOutlineGroupOff className='flex justify-center text-5xl mt-14 mx-auto'/>
        :
-       myGroupShow.map((item)=>{
-        return <div className=' relative '>
+       myGroupShow.map((item,index)=>{
+        return <div key={index} className=' relative '>
        <div className='group'>
          <Flex className=' mt-5 justify-between'>
            <Flex className=" gap-x-4">

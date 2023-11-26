@@ -6,6 +6,6 @@ import ActiveChatSlice from '../../Components/ActiveChatSlices/ActiveChatSlice'
 export const store = configureStore({
   reducer: {
     userLoginInfo:userSlice,
-    ActiveChatSlice:ActiveChatSlice
+    activeChat:ActiveChatSlice
   },
 })

@@ -8,15 +8,15 @@ import { useEffect, useState } from 'react'
 import Flex from '../../Flex'
 import SubHeading from '../HomePage/SubHeading'
 import Medium from '../HomePage/Medium'
+import {activeChat} from '../../ActiveChatSlices/ActiveChatSlice'
 
 
 function MessageFriends({ className,friendsClass}) {
   const data = useSelector(state => state.userLoginInfo.userInfo)
   const [friendAccept, setfriendAccept] = useState([])
   const db = getDatabase();
- const activeChat=useSelector(state => state.ActiveChatSlice
-  )
- console.log(activeChat);
+ const activeFriend=useSelector(state => state.activeChat)
+ console.log(activeFriend);
  const dispatch=useDispatch();
 
   useEffect(() => {
@@ -56,11 +56,12 @@ function MessageFriends({ className,friendsClass}) {
    }
 
  const handleActiveFriend =(item)=>{
-   if(data.uid ==item.receiverid){
-    dispatch(activeChat({id:item.senderid, name:item.sendername}))
-   }else{
-    dispatch(activeChat({id:item.receiverid, name:item.receivername}))
-   }
+  console.log(item);
+  if( data.uid == item.receiverid){
+    dispatch(activeChat({id:item.senderid , name:item.sendername}))
+  }else{
+    dispatch(activeChat({id:item.receiverid , name:item.receivername}))
+  }
  }
   return (
     <section className={` ${className}`}>
