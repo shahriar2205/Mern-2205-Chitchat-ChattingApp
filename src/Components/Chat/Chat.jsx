@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Flex from '../Flex'
 import msg from '../Photo/msg.png'
 import { PiDotsThreeOutlineVerticalDuotone } from 'react-icons/pi'
@@ -8,19 +8,18 @@ import { IoIosSend } from "react-icons/io";
 import { HiOutlineEmojiHappy } from "react-icons/hi";
 import { MdCameraAlt } from "react-icons/md";
 import { useSelector } from 'react-redux'
-import { getDatabase, push, ref, set } from 'firebase/database'
+import { getDatabase, onValue, push, ref, set } from 'firebase/database'
 
 
 function Chat({ className }) {
   const data = useSelector(state => state.userLoginInfo.userInfo)
   const activeFriend = useSelector(state => state.activeChat)
-  console.log(activeFriend.active.status);
   const [inputSize, setinputSize] = useState(false)
   const [chatMsg,setchatMsg]=useState('')
   const db= getDatabase();
+  const [msgShow ,setmsgShow]=useState([])
   const handleChat = (e) => {
-  
-    if (e.target.value.length > 0) {
+      if (e.target.value.length > 0) {
       setinputSize(true)
     } else {
       setinputSize(false)
@@ -38,19 +37,21 @@ function Chat({ className }) {
        date: `${new Date().getFullYear()} - ${new Date().getMonth()} - ${new Date().getDate()}, ${new Date().getHours()} : ${new Date().getMinutes()} : ${new Date().getSeconds()} `
       })
     }
-    
-  //  if(activeFriend.active.status == 'singleMsg'){
-  //   set(push(ref(db, 'singleChat/')), {
-  //     chatMsg:chatMsg,
-  //     msgSendid:data.uid,
-  //     msgSendname:data.diplayName,
-  //     msgReceiveid:activeFriend.active.id,
-  //     msgReceivename:activeFriend.active.name,
-  //     })
-  //  }else{
-  //   console.log("Group Msg");
-  //  }
-  }
+ }
+ useEffect(() => {
+  const singleMsgRef = ref(db, 'singleMsg/');
+  onValue(singleMsgRef, (snapshot) => {
+    let arr =[]
+      snapshot.forEach((item) => {
+       if(data.uid == item.val().msgSendid || item.val().msgReceiverid == activeFriend.active.id && data.uid == item.val().msgReceiverid || item.val().msgSendid == activeFriend.active.id){
+        
+       }
+     })
+     setmsgShow(arr)
+  })
+  console.log(msgShow);
+
+}, [])
   return (
     <section className={`${className}`}>
       <div className='chatt w-[800px]  h-[690px] shadow-shadow px-14 py-7 rounded-lg '>
