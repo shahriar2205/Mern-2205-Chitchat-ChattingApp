@@ -44,7 +44,7 @@ function Chat({ className }) {
     let arr =[]
       snapshot.forEach((item) => {
        if(data.uid == item.val().msgSendid || item.val().msgReceiverid == activeFriend.active.id && data.uid == item.val().msgReceiverid || item.val().msgSendid == activeFriend.active.id){
-        
+        arr.push(item.val())
        }
      })
      setmsgShow(arr)
