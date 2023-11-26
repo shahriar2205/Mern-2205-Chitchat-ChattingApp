@@ -25,9 +25,10 @@ function Chat({ className }) {
       setinputSize(false)
     }
     setchatMsg(e.target.value)
+  
   }
   const handleSend = () => {
-    if (activeFriend.active.status == 'singleMsg') {
+   if (activeFriend.active.status == 'singleMsg') {
       set(push(ref(db, 'singleMsg/')), {
         chat: chatMsg,
         msgSendid: data.uid,
@@ -37,7 +38,8 @@ function Chat({ className }) {
         date: `${new Date().getFullYear()} - ${new Date().getMonth()+1} - ${new Date().getDate()}, ${new Date().getHours()} : ${new Date().getMinutes()} : ${new Date().getSeconds()} `
       })
     }
-  }
+   
+    }
   useEffect(() => {
     const singleMsgRef = ref(db, 'singleMsg/');
     onValue(singleMsgRef, (snapshot) => {
@@ -88,18 +90,18 @@ function Chat({ className }) {
          <path d="M12.3186 1.17537C13.1181 0.0939677 14.7356 0.0939677 15.5351 1.17537L27.0944 16.8111C28.0703 18.1312 27.1279 20 25.4861 20H2.36753C0.725776 20 -0.216681 18.1312 0.759296 16.8111L12.3186 1.17537Z" fill="#5F35F5" />
        </svg>
      </div>
-     <Flex className=" justify-end gap-x-2">
-     <p className=' mt-1 text-[#87abcb] text-[10px]'>
+     {/* <Flex className=" justify-end gap-x-2"> */}
+     <p className=' mr-[50px] mt-1 text-[#87abcb] text-[10px]'>
       {
         moment(item.date , "YYYYMMDD hh:mm:ss a").fromNow()
       }
      </p>
-      <p className=' mt-1 text-[#87abcb] text-[10px]'>
+      {/* <p className=' mt-1 text-[#87abcb] text-[10px]'>
       {
        moment().format('LT')
       }
-     </p>
-     </Flex>
+     </p> */}
+     {/* </Flex> */}
     
    </div>
   // sender design//
@@ -114,22 +116,22 @@ function Chat({ className }) {
         <path d="M12.3186 1.17537C13.1181 0.0939677 14.7356 0.0939677 15.5351 1.17537L27.0944 16.8111C28.0703 18.1312 27.1279 20 25.4861 20H2.36753C0.725776 20 -0.216681 18.1312 0.759296 16.8111L12.3186 1.17537Z" fill="#F1F1F1" />
       </svg>
     </div>
-   <Flex>
-   <p className=' ml-[10px] mt-1 text-[#87abcb] text-[10px]'>
+   {/* <Flex> */}
+   <p className=' ml-[15px] mt-1 text-[#87abcb] text-[10px]'>
       {
          
           moment(item.date , 'YYYYMMDD hh:mm:ss a').fromNow()
        
       }
     </p>
-    <p className=' ml-[10px] mt-1 text-[#87abcb] text-[10px]'>
+    {/* <p className=' ml-[10px] mt-1 text-[#87abcb] text-[10px]'>
       {
          
          moment().format('LT')
        
       }
-    </p>
-   </Flex>
+    </p> */}
+   {/* </Flex> */}
   </div>
   // receiver design //
     ))
@@ -139,7 +141,7 @@ function Chat({ className }) {
            
 
               {/* receiver photo design  */}
-              <div className=' mt-7  '>
+              {/* <div className=' mt-7  '>
                 <div className=' py-1 px-2 inline-block rounded-lg relative   bg-[#F1F1F1]   '>
                   <img src={signPhoto} alt={signPhoto} className='w-[200px] ' />
                   <svg
@@ -147,12 +149,12 @@ function Chat({ className }) {
                     <path d="M12.3186 1.17537C13.1181 0.0939677 14.7356 0.0939677 15.5351 1.17537L27.0944 16.8111C28.0703 18.1312 27.1279 20 25.4861 20H2.36753C0.725776 20 -0.216681 18.1312 0.759296 16.8111L12.3186 1.17537Z" fill="#F1F1F1" />
                   </svg>
                 </div>
-              </div>
+              </div> */}
               {/* receiver photo design  */}
 
               <div className='pr-10'>
                 {/* sender  photo design */}
-                <div className=' mt-6 text-right '>
+                {/* <div className=' mt-6 text-right '>
                   <div className=' py-1 px-2 inline-block rounded-lg relative   bg-signBtn   text-white'>
                     <img src={signPhoto} alt={signPhoto} className='w-[200px] ' />
                     <svg
@@ -160,7 +162,7 @@ function Chat({ className }) {
                       <path d="M12.3186 1.17537C13.1181 0.0939677 14.7356 0.0939677 15.5351 1.17537L27.0944 16.8111C28.0703 18.1312 27.1279 20 25.4861 20H2.36753C0.725776 20 -0.216681 18.1312 0.759296 16.8111L12.3186 1.17537Z" fill="#5F35F5" />
                     </svg>
                   </div>
-                </div>
+                </div> */}
                 {/* sender photo design */}
               </div>
             </div>
