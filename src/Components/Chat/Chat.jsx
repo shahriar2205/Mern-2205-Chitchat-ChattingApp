@@ -7,8 +7,10 @@ import "../Chat/Chat.css"
 import { IoIosSend } from "react-icons/io";
 import { HiOutlineEmojiHappy } from "react-icons/hi";
 import { MdCameraAlt } from "react-icons/md";
+import { useSelector } from 'react-redux'
 
 function Chat({className}) {
+  const activeChat=useSelector(state => state.ActiveChatSlice)
   const [inputSize,setinputSize]=useState(false)
   const handleChat =(e)=>{
     if(e.target.value.length >0){
@@ -33,7 +35,7 @@ function Chat({className}) {
               <div className=' w-4 h-4 rounded-full shadow-online bg-[#00FF75] absolute bottom-[6px] right-3'></div>
             </div>
             <div className=' mt-2'>
-              <h3 className=' font-open text-2xl font-bold '>Swathi </h3>
+              <h3 className=' font-open text-2xl font-bold '>{activeChat.active} </h3>
               <p>Online</p>
             </div>
           </Flex>

@@ -14,7 +14,8 @@ function MessageFriends({ className,friendsClass}) {
   const data = useSelector(state => state.userLoginInfo.userInfo)
   const [friendAccept, setfriendAccept] = useState([])
   const db = getDatabase();
- const activeChat=useSelector(state => state.activeChat.active)
+ const activeChat=useSelector(state => state.ActiveChatSlice
+  )
  console.log(activeChat);
  const dispatch=useDispatch();
 
@@ -54,8 +55,8 @@ function MessageFriends({ className,friendsClass}) {
     }
    }
 
- const handleActiveFriend =()=>{
-  dispatch
+ const handleActiveFriend =(item)=>{
+ dispatch(activeChat)
  }
   return (
     <section className={` ${className}`}>
@@ -67,7 +68,7 @@ function MessageFriends({ className,friendsClass}) {
 
         <div className=' relative '>
           {friendAccept.map(item => (
-            <div onClick={handleActiveFriend} className=''>
+            <div onClick={()=>handleActiveFriend(item)} className=''>
               <Flex className=' mt-5 justify-between'>
 
                 <Flex className=" gap-x-4">
