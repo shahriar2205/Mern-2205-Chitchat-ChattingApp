@@ -9,7 +9,7 @@ import { HiOutlineEmojiHappy } from "react-icons/hi";
 import { MdCameraAlt } from "react-icons/md";
 import { useSelector } from 'react-redux'
 import { getDatabase, onValue, push, ref, set } from 'firebase/database'
-
+import moment from 'moment'
 
 function Chat({ className }) {
   const data = useSelector(state => state.userLoginInfo.userInfo)
@@ -34,7 +34,7 @@ function Chat({ className }) {
         msgSendname: data.displayName,
         msgReceiverid: activeFriend.active.id,
         msgReceivername: activeFriend.active.name,
-        date: `${new Date().getFullYear()} - ${new Date().getMonth()} - ${new Date().getDate()}, ${new Date().getHours()} : ${new Date().getMinutes()} : ${new Date().getSeconds()} `
+        date: `${new Date().getFullYear()} - ${new Date().getMonth()+1} - ${new Date().getDate()}, ${new Date().getHours()} : ${new Date().getMinutes()} : ${new Date().getSeconds()} `
       })
     }
   }
@@ -88,7 +88,19 @@ function Chat({ className }) {
          <path d="M12.3186 1.17537C13.1181 0.0939677 14.7356 0.0939677 15.5351 1.17537L27.0944 16.8111C28.0703 18.1312 27.1279 20 25.4861 20H2.36753C0.725776 20 -0.216681 18.1312 0.759296 16.8111L12.3186 1.17537Z" fill="#5F35F5" />
        </svg>
      </div>
-     <p className=' mr-[50px] mt-1 text-[#87abcb] text-[10px]'>2.pm</p>
+     <Flex className=" justify-end gap-x-2">
+     <p className=' mt-1 text-[#87abcb] text-[10px]'>
+      {
+        moment(item.date , "YYYYMMDD hh:mm:ss a").fromNow()
+      }
+     </p>
+      <p className=' mt-1 text-[#87abcb] text-[10px]'>
+      {
+       moment().format('LT')
+      }
+     </p>
+     </Flex>
+    
    </div>
   // sender design//
   :
@@ -102,7 +114,22 @@ function Chat({ className }) {
         <path d="M12.3186 1.17537C13.1181 0.0939677 14.7356 0.0939677 15.5351 1.17537L27.0944 16.8111C28.0703 18.1312 27.1279 20 25.4861 20H2.36753C0.725776 20 -0.216681 18.1312 0.759296 16.8111L12.3186 1.17537Z" fill="#F1F1F1" />
       </svg>
     </div>
-    <p className=' ml-[10px] mt-1 text-[#87abcb] text-[10px]'>2.pm</p>
+   <Flex>
+   <p className=' ml-[10px] mt-1 text-[#87abcb] text-[10px]'>
+      {
+         
+          moment(item.date , 'YYYYMMDD hh:mm:ss a').fromNow()
+       
+      }
+    </p>
+    <p className=' ml-[10px] mt-1 text-[#87abcb] text-[10px]'>
+      {
+         
+         moment().format('LT')
+       
+      }
+    </p>
+   </Flex>
   </div>
   // receiver design //
     ))
