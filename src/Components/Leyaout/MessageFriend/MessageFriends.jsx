@@ -58,13 +58,13 @@ function MessageFriends({ className,friendsClass}) {
  const handleActiveFriend =(item)=>{
   console.log(item);
   if( data.uid == item.receiverid){
-    dispatch(activeChat({id:item.senderid , name:item.sendername}));
+    dispatch(activeChat({status: "singleMsg", id:item.senderid , name:item.sendername}));
     // localStorage.setItem('userLoginInfo', JSON.stringify(userLoginInfo(user.user)))
-    localStorage.setItem('activeChat', JSON.stringify(activeChat(item.sendername)))
+    // localStorage.setItem('activeChat', JSON.stringify(activeChat(item.sendername)))
 
       }else{
-    dispatch(activeChat({id:item.receiverid , name:item.receivername}))
-    localStorage.setItem('activeChat', JSON.stringify(activeChat(item.receivername))) 
+    dispatch(activeChat({ status: "singleMsg", id:item.receiverid , name:item.receivername}))
+    // localStorage.setItem('activeChat', JSON.stringify(activeChat(item.receivername))) 
   }
  }
   return (
