@@ -28,15 +28,19 @@ function Chat({ className }) {
   
   }
   const handleSend = () => {
-   if (activeFriend.active.status == 'singleMsg') {
-      set(push(ref(db, 'singleMsg/')), {
-        chat: chatMsg,
-        msgSendid: data.uid,
-        msgSendname: data.displayName,
-        msgReceiverid: activeFriend.active.id,
-        msgReceivername: activeFriend.active.name,
-        date: `${new Date().getFullYear()} - ${new Date().getMonth()+1} - ${new Date().getDate()}, ${new Date().getHours()} : ${new Date().getMinutes()} : ${new Date().getSeconds()} `
-      })
+   if (activeFriend.active.status == 'singleMsg' && chatMsg) {
+    set(push(ref(db, 'singleMsg/')), {
+      chat: chatMsg,
+      msgSendid: data.uid,
+      msgSendname: data.displayName,
+      msgReceiverid: activeFriend.active.id,
+      msgReceivername: activeFriend.active.name,
+      date: `${new Date().getFullYear()} - ${new Date().getMonth()+1} - ${new Date().getDate()}, ${new Date().getHours()} : ${new Date().getMinutes()} : ${new Date().getSeconds()} `
+    })
+      
+    }
+    else{
+
     }
    
     }
@@ -91,7 +95,7 @@ function Chat({ className }) {
        </svg>
      </div>
      {/* <Flex className=" justify-end gap-x-2"> */}
-     <p className=' mr-[50px] mt-1 text-[#87abcb] text-[10px]'>
+     <p className=' mr-[20px] mt-1 text-[#87abcb] text-[10px]'>
       {
         moment(item.date , "YYYYMMDD hh:mm:ss a").fromNow()
       }
@@ -126,7 +130,6 @@ function Chat({ className }) {
     </p>
     {/* <p className=' ml-[10px] mt-1 text-[#87abcb] text-[10px]'>
       {
-         
          moment().format('LT')
        
       }

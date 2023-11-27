@@ -70,10 +70,8 @@ function SideBar({ className,active }) {
       const storageRef = ref(storage, auth.currentUser.uid);
       const message4 = cropperRef.current?.cropper.getCroppedCanvas().toDataURL();
       uploadString(storageRef, message4, 'data_url').then((snapshot) => {
-        console.log('Uploaded a data_url string!');
-        getDownloadURL(storageRef).then((downloadURL) => {
-          console.log('File available at', downloadURL);
-          updateProfile(auth.currentUser, {
+          getDownloadURL(storageRef).then((downloadURL) => {
+        updateProfile(auth.currentUser, {
             photoURL: downloadURL
           }).then(() => {
             setImage('')

@@ -34,7 +34,6 @@ function LoginPage() {
    const handleEmail = event => {
       setEmail(event.target.value);
       setEmailErr("")
-
    };
 
 
