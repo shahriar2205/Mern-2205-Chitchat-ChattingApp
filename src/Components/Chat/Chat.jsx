@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect,  useState } from 'react'
 import Flex from '../Flex'
 import msg from '../Photo/msg.png'
 import { PiDotsThreeOutlineVerticalDuotone } from 'react-icons/pi'
@@ -12,16 +12,18 @@ import { getDatabase, onValue, push, ref, set } from 'firebase/database'
 import moment from 'moment'
 import ModalImage from "react-modal-image";
 import { getDownloadURL, getStorage, ref as refs, uploadBytes } from "firebase/storage";
+import EmojiPicker from 'emoji-picker-react';
 
 function Chat({ className }) {
   const storage = getStorage();
   const data = useSelector(state => state.userLoginInfo.userInfo)
   const activeFriend = useSelector(state => state.activeChat)
+
   const [inputSize, setinputSize] = useState(false)
   const [chatMsg, setchatMsg] = useState('')
   const db = getDatabase();
   const [msgShow, setmsgShow] = useState([])
-
+  const [showEmoji,setshowEmoji]=useState(false);
   
 
   const handleChat = (e) => {
@@ -31,7 +33,7 @@ function Chat({ className }) {
       setinputSize(false)
     }
     setchatMsg(e.target.value)
-
+   setshowEmoji(false)
   }
   const handleSend = () => {
     if (activeFriend.active.status == 'singleMsg' && chatMsg) {
@@ -41,12 +43,16 @@ function Chat({ className }) {
         msgSendname: data.displayName,
         msgReceiverid: activeFriend.active.id,
         msgReceivername: activeFriend.active.name,
-        date: `${new Date().getFullYear()} - ${new Date().getMonth() + 1} - ${new Date().getDate()}, ${new Date().getHours()} : ${new Date().getMinutes()} : ${new Date().getSeconds()} `
+        date: `${new Date().getFullYear()} - ${new Date().getMonth() + 1} - ${new Date().getDate()}, ${new Date().getHours()} : ${new Date().getMinutes()} : ${new Date().getSeconds()} `,
+        
+      }).then(()=>{
+    setchatMsg("")
+    setshowEmoji(false)
       })
     }
-  
     else {
     }
+
   }
   useEffect(() => {
     const singleMsgRef = ref(db, 'singleMsg/');
@@ -76,6 +82,13 @@ function Chat({ className }) {
       });
     });
   }
+  const handleEmoji=(e)=>{
+    const emoji = e.emoji;
+    setchatMsg(chatMsg+e.emoji)
+  
+
+  }
+
   return (
     <section className={`${className}`}>
       <div className='chatt w-[800px]  h-[690px] shadow-shadow px-14 py-7 rounded-lg '>
@@ -89,7 +102,9 @@ function Chat({ className }) {
                   <div className=' w-4 h-4 rounded-full shadow-online bg-[#00FF75] absolute bottom-[6px] right-3'></div>
                 </div>
                 <div className=' mt-2'>
-                  <h3 className=' font-open text-2xl font-bold '>{activeFriend.active.name}</h3>
+                  <h3 className=' font-open text-2xl font-bold '>{
+                  activeFriend.active.name
+                  }</h3>
                   <p>Online</p>
                 </div>
               </Flex>
@@ -214,13 +229,19 @@ function Chat({ className }) {
 
           </div>
           <Flex className="gap-x-2 items-center  relative">
-            <input onChange={handleChat} type="text" placeholder='typing...' className={`py-2 bg-[#F1F1F1]  px-6 rounded-xl outline-none ${inputSize ? "w-[95%]" : "w-[80%] "}`} />
+            <input onChange={handleChat} value={chatMsg} type="text" placeholder='typing...' className={`py-2 bg-[#F1F1F1]  pl-6 pr-[4.7rem] rounded-xl outline-none ${inputSize ? "w-[95%]" : "w-[80%] "}`} />
             <Flex className={`  absolute ${inputSize ? " top-[11px] right-[60px]" : " top-[10px] right-[150px]"} gap-x-2 text-[#707070]`}>
-              <HiOutlineEmojiHappy size={22} />
+              <HiOutlineEmojiHappy onClick={()=>setshowEmoji(!showEmoji)} size={22} />
               <label>
                 <input onChange={handleImg} type="file" className='hidden' />
                 <MdCameraAlt size={22} />
               </label>
+              {
+                showEmoji && 
+                <div className=' absolute top-[-500px] right-16 '>
+              <EmojiPicker Emoji Style="Facebook" Height="353"  Theme="Dark" onEmojiClick={(e)=>handleEmoji(e)} />
+            </div>
+              }
             </Flex>
             <IoIosSend onClick={handleSend} className=' bg-signBtn  text-4xl py-1 px-2 text-white rounded-lg' />
           </Flex>

@@ -68,7 +68,6 @@ function LoginPage() {
       if (Email && Password && (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(Email))) {
          signInWithEmailAndPassword(auth, Email, Password).then((user) => {
             dispatch(userLoginInfo(user.user));
-
             localStorage.setItem('userLoginInfo', JSON.stringify(userLoginInfo(user.user)))
             toast.success('Login');
             setTimeout(() => {

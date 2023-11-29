@@ -27,7 +27,6 @@ function MessageFriends({ className,friendsClass}) {
         if (data.uid === item.val().receiverid || data.uid === item.val().senderid) {
           arr.push({ ...item.val(),frId:item.key })
         }
-
       })
       setfriendAccept(arr)
     })
@@ -55,18 +54,21 @@ function MessageFriends({ className,friendsClass}) {
     }
    }
 
- const handleActiveFriend =(item)=>{
-  console.log(item);
-  if( data.uid == item.receiverid){
-    dispatch(activeChat({status: "singleMsg", id:item.senderid , name:item.sendername}));
-    // localStorage.setItem('userLoginInfo', JSON.stringify(userLoginInfo(user.user)))
-    // localStorage.setItem('activeChat', JSON.stringify(activeChat(item.sendername)))
+   const handleActiveFriend =(item)=>{
+    console.log(item);
 
-      }else{
-    dispatch(activeChat({ status: "singleMsg", id:item.receiverid , name:item.receivername}))
-    // localStorage.setItem('activeChat', JSON.stringify(activeChat(item.receivername))) 
-  }
- }
+    const localFrnd={
+     status: "singleMsg",
+      id : data.uid==item.receiverid ?
+      item.senderid :item.receiverid,
+      name : data.uid == item.receiverid ?
+       item.sendername : item.receivername
+    }
+    if(localFrnd.status== "singleMsg"){
+      dispatch(activeChat(localFrnd))
+      localStorage.setItem("activeFrndlist" , JSON.stringify(localFrnd))
+     }
+    }
   return (
     <section className={` ${className}`}>
       <div className={`pt-4 pb-9 shadow-shadow px-7 rounded-xl overflow-y-scroll  ${friendsClass}`}>
